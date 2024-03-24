@@ -1,5 +1,8 @@
 import React, { useEffect, useState } from "react";
 import IlIlce from "./data/ililce.json";
+import ListGroup from 'react-bootstrap/ListGroup';
+import { Form } from "react-bootstrap";
+
 
 function CityInfo() {
   const [il, setIl] = useState(IlIlce);
@@ -38,9 +41,10 @@ useEffect(() => {
     
   };
   return (
-    <div className="urun">
+    <div className="container-fluid">
       <div>
-        <select id="il" onChange={handleIl}>
+      <Form.Select size="lg" id="il" onChange={handleIl}>
+        
           <option>İl Seçiniz</option>
           {il.map(i => {
             return (
@@ -49,11 +53,11 @@ useEffect(() => {
               </option>
             );
           })}
-        </select>
+       </Form.Select>
       </div>
 
       <div>
-        <select id="il" onChange={handleIlce}>
+        <Form.Select size="lg" id="il" onChange={handleIlce}>
           <option>İl Seçiniz</option>
           {ilceler.map(i => {
             return (
@@ -62,22 +66,20 @@ useEffect(() => {
               </option>
             );
           })}
-        </select>
+        </Form.Select>
       </div>
       {selectedIl != null &&
         <div>
-          <p>
-            İl Adı : {selectedIl.il_adi}
-          </p>
-          <p>
-            Plaka Kodu : {selectedIl.plaka_kodu}
-          </p>
-          <p>
-            Alan Kodu : {selectedIl.alan_kodu}
-          </p>
-          <p>
-            Nüfus : {selectedIl.nufus}
-          </p>
+             <ListGroup>
+             <ListGroup.Item as="li" active>
+             {selectedIl.il_adi} Hakkında
+      </ListGroup.Item>
+      <ListGroup.Item >İl Adı : {selectedIl.il_adi}</ListGroup.Item>
+      <ListGroup.Item> Plaka Kodu : {selectedIl.plaka_kodu}</ListGroup.Item>
+      <ListGroup.Item>Alan Kodu : {selectedIl.alan_kodu}</ListGroup.Item>
+      <ListGroup.Item> Nüfus : {selectedIl.nufus}</ListGroup.Item>
+    </ListGroup>
+       
           <p>
             Bölge : {selectedIl.bolge}
           </p>
