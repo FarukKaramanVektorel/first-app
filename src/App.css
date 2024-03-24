@@ -36,3 +36,10 @@
     transform: rotate(360deg);
   }
 }
+
+.urun{
+  margin: 20px;
+  text-align: left;
+  font-size: larger;
+  color: brown;
+}
